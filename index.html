@@ -1,217 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub README Generator with Specialized Templates</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>READMEdev - Generator</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Marked.js library live markdown rendering ke liye -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>GitHub README Generator</h1>
-            <p>Create professional README files with specialized templates for your project type</p>
-        </header>
 
-        <div class="template-selector">
-            <h3>Select Your Project Type</h3>
-            <div class="template-buttons">
-                <button class="template-btn active" data-template="general">
-                    <span class="template-icon">📝</span>
-                    <span>General Project</span>
-                </button>
-                <button class="template-btn" data-template="datascience">
-                    <span class="template-icon">📊</span>
-                    <span>Data Science</span>
-                </button>
-                <button class="template-btn" data-template="mobile">
-                    <span class="template-icon">📱</span>
-                    <span>Mobile App</span>
-                </button>
-                <button class="template-btn" data-template="gamedev">
-                    <span class="template-icon">🎮</span>
-                    <span>Game Development</span>
-                </button>
-            </div>
+  <header class="header">
+    <h1>🚀 READMEdev</h1>
+    <p>Create beautiful README.md files for your repositories instantly.</p>
+  </header>
+
+  <main class="container">
+    <!-- Left Column: Form Inputs -->
+    <section class="form-section">
+      <h2>Edit Details</h2>
+
+      <div class="form-group">
+        <label for="projectTitle">Project Title</label>
+        <input type="text" id="projectTitle" placeholder="e.g., Awesome Web App">
+      </div>
+
+      <div class="form-group">
+        <label for="projectDesc">Short Description</label>
+        <textarea id="projectDesc" rows="3" placeholder="Briefly describe what your project does..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Select Badges</label>
+        <div class="badges-option">
+          <label><input type="checkbox" class="badge-check" value="license"> License (MIT)</label>
+          <label><input type="checkbox" class="badge-check" value="build"> Build Status</label>
+          <label><input type="checkbox" class="badge-check" value="version"> Version (v1.0.0)</label>
         </div>
+      </div>
 
-        <div class="main-content">
-            <div class="form-section">
-                <h2>Project Details</h2>
-                
-                <div class="form-group">
-                    <label for="projectName">Project Name *</label>
-                    <input type="text" id="projectName" placeholder="My Awesome Project" required>
-                </div>
+      <div class="form-group">
+        <label for="techStack">Technologies Used (Comma separated)</label>
+        <input type="text" id="techStack" placeholder="e.g., HTML, CSS, JavaScript, React">
+      </div>
 
-                <div class="form-group">
-                    <label for="projectDescription">Project Description *</label>
-                    <textarea id="projectDescription" placeholder="Brief description of what your project does" rows="3" required></textarea>
-                </div>
+      <div class="form-group">
+        <label for="installation">Installation Steps</label>
+        <textarea id="installation" rows="3" placeholder="npm install my-app"></textarea>
+      </div>
 
-                <div id="generalFields" class="conditional-fields">
-                    <div class="form-group">
-                        <label for="features">Key Features (one per line)</label>
-                        <textarea id="features" placeholder="Feature 1&#10;Feature 2&#10;Feature 3" rows="4"></textarea>
-                    </div>
-                </div>
+      <div class="form-group">
+        <label for="usage">Usage Examples</label>
+        <textarea id="usage" rows="3" placeholder="npm start"></textarea>
+      </div>
 
-                <div id="dataScienceFields" class="conditional-fields hidden">
-                    <div class="form-group">
-                        <label for="datasets">Datasets Used</label>
-                        <textarea id="datasets" placeholder="Dataset name and source&#10;e.g., MNIST from Keras" rows="3"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="models">Models and Algorithms</label>
-                        <textarea id="models" placeholder="Random Forest, Neural Networks, XGBoost" rows="3"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="metrics">Performance Metrics</label>
-                        <textarea id="metrics" placeholder="Accuracy: 95%&#10;F1 Score: 0.92" rows="3"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="paperReference">Paper or Research Reference (optional)</label>
-                        <input type="text" id="paperReference" placeholder="Link to research paper or article">
-                    </div>
-                </div>
+      <div class="form-group">
+        <label for="license">License</label>
+        <select id="license">
+          <option value="MIT">MIT License</option>
+          <option value="Apache-2.0">Apache 2.0</option>
+          <option value="GPL-3.0">GPL v3</option>
+          <option value="None">None</option>
+        </select>
+      </div>
+    </section>
 
-                <div id="mobileFields" class="conditional-fields hidden">
-                    <div class="form-group">
-                        <label for="platforms">Target Platforms</label>
-                        <div class="checkbox-inline">
-                            <label><input type="checkbox" value="iOS"> iOS</label>
-                            <label><input type="checkbox" value="Android"> Android</label>
-                            <label><input type="checkbox" value="Web"> Web</label>
-                            <label><input type="checkbox" value="Cross Platform"> Cross Platform</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="minimumOS">Minimum OS Version</label>
-                        <input type="text" id="minimumOS" placeholder="iOS 13.0, Android 8.0">
-                    </div>
-                    <div class="form-group">
-                        <label for="appFeatures">App Features (one per line)</label>
-                        <textarea id="appFeatures" placeholder="User authentication&#10;Real time notifications&#10;Offline support" rows="4"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="screenshots">Screenshots/Demo Link (optional)</label>
-                        <input type="text" id="screenshots" placeholder="Link to app store or demo page">
-                    </div>
-                </div>
-
-                <div id="gamedevFields" class="conditional-fields hidden">
-                    <div class="form-group">
-                        <label for="engine">Game Engine</label>
-                        <select id="engine">
-                            <option value="">Select Engine</option>
-                            <option value="Unity">Unity</option>
-                            <option value="Unreal Engine">Unreal Engine</option>
-                            <option value="Godot">Godot</option>
-                            <option value="Phaser">Phaser</option>
-                            <option value="Custom">Custom Engine</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="genre">Game Genre</label>
-                        <input type="text" id="genre" placeholder="RPG, FPS, Puzzle, Platformer, etc.">
-                    </div>
-                    <div class="form-group">
-                        <label for="gameplay">Gameplay Mechanics (one per line)</label>
-                        <textarea id="gameplay" placeholder="Physics based puzzle solving&#10;Turn based combat&#10;Resource management" rows="4"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="platforms-game">Target Platforms</label>
-                        <div class="checkbox-inline">
-                            <label><input type="checkbox" value="PC"> PC</label>
-                            <label><input type="checkbox" value="Console"> Console</label>
-                            <label><input type="checkbox" value="Mobile"> Mobile</label>
-                            <label><input type="checkbox" value="Web"> Web</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="trailerLink">Game Trailer/Demo Link (optional)</label>
-                        <input type="text" id="trailerLink" placeholder="YouTube link or itch.io page">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="installation">Installation/Setup Instructions</label>
-                    <textarea id="installation" placeholder="npm install&#10;pip install&#10;Build instructions" rows="4"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="usage">Usage Example</label>
-                    <textarea id="usage" placeholder="Code example or how to run the project" rows="4"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="technologies">Technologies/Tools Used (comma separated)</label>
-                    <input type="text" id="technologies" placeholder="JavaScript, React, Node.js, PostgreSQL">
-                </div>
-
-                <div class="form-group">
-                    <label for="author">Author Name</label>
-                    <input type="text" id="author" placeholder="Your Name">
-                </div>
-
-                <div class="form-group">
-                    <label for="githubLink">GitHub Repository Link (optional)</label>
-                    <input type="text" id="githubLink" placeholder="https://github.com/username/repo">
-                </div>
-
-                <div class="form-group">
-                    <label for="license">License</label>
-                    <select id="license">
-                        <option value="MIT">MIT</option>
-                        <option value="Apache 2.0">Apache 2.0</option>
-                        <option value="GPL v3.0">GPL v3.0</option>
-                        <option value="BSD 3-Clause">BSD 3-Clause</option>
-                        <option value="None">No License</option>
-                    </select>
-                </div>
-
-                <div class="form-group checkbox-group">
-                    <label>
-                        <input type="checkbox" id="includeTOC" checked>
-                        Include Table of Contents
-                    </label>
-                    <label>
-                        <input type="checkbox" id="includeContributing">
-                        Include Contributing Section
-                    </label>
-                    <label>
-                        <input type="checkbox" id="includeFAQ">
-                        Include FAQ Section
-                    </label>
-                    <label>
-                        <input type="checkbox" id="includeTroubleshooting">
-                        Include Troubleshooting Section
-                    </label>
-                </div>
-
-                <div class="button-group">
-                    <button id="generateBtn" class="btn btn-primary">Generate README</button>
-                    <button id="downloadBtn" class="btn btn-success" disabled>Download README</button>
-                    <button id="copyBtn" class="btn btn-secondary" disabled>Copy to Clipboard</button>
-                    <button id="resetBtn" class="btn btn-danger">Reset Form</button>
-                </div>
-            </div>
-
-            <div class="preview-section">
-                <div class="preview-header">
-                    <h2>Preview</h2>
-                    <span id="previewStatus" class="status-badge">Ready to generate</span>
-                </div>
-                <div id="previewContent" class="preview-content">
-                    <p style="text-align: center; color: #888; margin-top: 40px;">
-                        Select a project type, fill in the form, and click "Generate README" to see preview
-                    </p>
-                </div>
-            </div>
+    <!-- Right Column: Live Preview & Markdown Output -->
+    <section class="preview-section">
+      <div class="preview-header">
+        <div class="tabs">
+          <button id="tabPreview" class="tab-btn active">Live Preview</button>
+          <button id="tabMarkdown" class="tab-btn">Raw Markdown</button>
         </div>
-    </div>
+        <div class="actions">
+          <button id="copyBtn" class="btn secondary">📋 Copy Markdown</button>
+          <button id="downloadBtn" class="btn primary">📥 Download .md</button>
+        </div>
+      </div>
 
-    <script src="templates.js"></script>
-    <script src="app.js"></script>
+      <!-- Live Rendered HTML -->
+      <div id="previewContainer" class="preview-box"></div>
+
+      <!-- Raw Markdown String -->
+      <textarea id="markdownContainer" class="preview-box hidden" readonly></textarea>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
