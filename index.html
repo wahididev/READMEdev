@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub README Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>GitHub README Generator</h1>
+            <p>Create professional README files instantly</p>
+        </header>
+
+        <div class="main-content">
+            <div class="form-section">
+                <h2>Project Details</h2>
+                
+                <div class="form-group">
+                    <label for="projectName">Project Name *</label>
+                    <input type="text" id="projectName" placeholder="My Awesome Project" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectDescription">Project Description *</label>
+                    <textarea id="projectDescription" placeholder="Brief description of what your project does" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="templateType">README Template</label>
+                    <select id="templateType">
+                        <option value="basic">Basic Project</option>
+                        <option value="webapp">Web Application</option>
+                        <option value="library">Library/Package</option>
+                        <option value="api">REST API</option>
+                        <option value="cli">CLI Tool</option>
+                        <option value="ml">Machine Learning</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="features">Key Features (one per line)</label>
+                    <textarea id="features" placeholder="Feature 1&#10;Feature 2&#10;Feature 3" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="installation">Installation Instructions</label>
+                    <textarea id="installation" placeholder="npm install&#10;pip install&#10;etc." rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="usage">Usage Example</label>
+                    <textarea id="usage" placeholder="Code example or command line usage" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="technologies">Technologies Used (comma separated)</label>
+                    <input type="text" id="technologies" placeholder="JavaScript, React, Node.js, PostgreSQL">
+                </div>
+
+                <div class="form-group">
+                    <label for="author">Author Name</label>
+                    <input type="text" id="author" placeholder="Your Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="license">License</label>
+                    <select id="license">
+                        <option value="MIT">MIT</option>
+                        <option value="Apache 2.0">Apache 2.0</option>
+                        <option value="GPL v3.0">GPL v3.0</option>
+                        <option value="BSD 3-Clause">BSD 3-Clause</option>
+                        <option value="None">No License</option>
+                    </select>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="includeTOC" checked>
+                        Include Table of Contents
+                    </label>
+                    <label>
+                        <input type="checkbox" id="includeContributing">
+                        Include Contributing Section
+                    </label>
+                    <label>
+                        <input type="checkbox" id="includeFAQ">
+                        Include FAQ Section
+                    </label>
+                </div>
+
+                <div class="button-group">
+                    <button id="generateBtn" class="btn btn-primary">Generate README</button>
+                    <button id="downloadBtn" class="btn btn-success" disabled>Download README</button>
+                    <button id="copyBtn" class="btn btn-secondary" disabled>Copy to Clipboard</button>
+                    <button id="resetBtn" class="btn btn-danger">Reset Form</button>
+                </div>
+            </div>
+
+            <div class="preview-section">
+                <div class="preview-header">
+                    <h2>Preview</h2>
+                    <span id="previewStatus" class="status-badge">Ready to generate</span>
+                </div>
+                <div id="previewContent" class="preview-content">
+                    <p style="text-align: center; color: #888; margin-top: 40px;">
+                        Fill in the form and click "Generate README" to see preview
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
